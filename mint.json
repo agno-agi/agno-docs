@@ -329,6 +329,7 @@
 						"examples/agents/recipe-creator",
 						"examples/agents/movie-recommender",
 						"examples/agents/books-recommender",
+						"examples/agents/media-trend-analyst",
 						"examples/agents/travel-planner"
 					]
 				},
@@ -346,7 +347,6 @@
 					"pages": [
 						"examples/apps/agentic-rag",
 						"examples/apps/text-to-sql",
-						"examples/apps/game-generator",
 						"examples/apps/geobuddy",
 						"examples/apps/chess-team"
 					]

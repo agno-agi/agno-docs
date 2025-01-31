@@ -1,0 +1,125 @@
+---
+title: Media Trend Analyst
+---
+
+This example shows how to create an intelligent media trend analysis agent that provides
+comprehensive insights into emerging trends across news and digital platforms. The agent combines
+keyword analysis, pattern recognition, and data-driven insights to deliver actionable media reports.
+
+Example prompts to try:
+- "Analyze media trends for AI agents on verge.com, linkedin.com, and x.com"
+- "Identify emerging trends in cryptocurrency coverage"
+- "Provide a report on media patterns for climate change discussions"
+- "Forecast future developments in the tech industry based on current media trends"
+- "Analyze the growth rate of discussions around electric vehicles"
+
+## Code
+
+```python media_trend_analysis_agent.py
+from datetime import datetime, timedelta
+from textwrap import dedent
+
+from agno.agent import Agent
+from agno.models.openai import OpenAIChat
+from agno.tools.exa import ExaTools
+from agno.tools.firecrawl import FirecrawlTools
+
+
+def calculate_start_date(days: int) -> str:
+    """Calculate start date based on number of days."""
+    start_date = datetime.now() - timedelta(days=days)
+    return start_date.strftime("%Y-%m-%d")
+
+
+agent = Agent(
+    model=OpenAIChat(id="gpt-4o"),
+    tools=[
+        ExaTools(start_published_date=calculate_start_date(30), type="keyword"),
+        FirecrawlTools(scrape=True),
+    ],
+    description=dedent("""\
+        You are an expert media trend analyst specializing in:
+        1. Identifying emerging trends across news and digital platforms
+        2. Recognizing pattern changes in media coverage
+        3. Providing actionable insights based on data
+        4. Forecasting potential future developments
+    """),
+    instructions=[
+        "Analyze the provided topic according to the user's specifications:",
+        "1. Use keywords to perform targeted searches",
+        "2. Identify key influencers and authoritative sources",
+        "3. Extract main themes and recurring patterns",
+        "4. Provide actionable recommendations",
+        "5. If sources are less than 2, only then scrape them using the firecrawl tool, don't crawl it and use them to generate the report",
+        "6. Growth rate should be in percentage, and if not possible, don't give growth rate",
+    ],
+    expected_output=dedent("""\
+    # Media Trend Analysis Report
+
+    ## Executive Summary
+    {High-level overview of findings and key metrics}
+
+    ## Trend Analysis
+    ### Volume Metrics
+    - Peak discussion periods: {dates}
+    - Growth rate: {percentage or don't show this}
+
+    ## Source Analysis
+    ### Top Sources
+    1. {Source 1}
+
+    2. {Source 2}
+
+    ## Actionable Insights
+    1. {Insight 1}
+       - Evidence: {data points}
+       - Recommended action: {action}
+
+    ## Future Predictions
+    1. {Prediction 1}
+       - Supporting evidence: {evidence}
+
+    ## References
+    {Detailed source list with links}
+    """),
+    markdown=True,
+    show_tool_calls=True,
+    add_datetime_to_instructions=True,
+)
+
+analysis_prompt = """\
+Analyze media trends for:
+Keywords: ai agents
+Sources: verge.com, linkedin.com, x.com
+"""
+
+agent.print_response(analysis_prompt, stream=True)
+```
+
+## Usage
+
+<Steps>
+
+    <Snippet file="create-venv-step.mdx" />
+
+    <Step title="Install required libraries">
+        ```bash
+        pip install openai exa_py firecrawl-py agno
+        ```
+    </Step>
+
+    <Step title="Set environment variables">
+        ```bash
+        export OPENAI_API_KEY=****
+        export EXA_API_KEY=****
+        export FIRECRAWL_API_KEY=****
+        ```
+    </Step>
+
+    <Step title="Run the agent">
+        ```bash
+        python media_trend_analysis_agent.py
+        ```
+    </Step>
+
+</Steps> 
