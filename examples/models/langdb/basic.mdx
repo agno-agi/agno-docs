@@ -1,0 +1,56 @@
+---
+title: Basic Usage
+sidebarTitle: Basic
+---
+
+This example demonstrates how to use LangDB's AI Gateway with Agno for basic text generation.
+
+## Code
+
+```python cookbook/models/langdb/basic.py
+from agno.agent import Agent, RunResponse  # noqa
+from agno.models.langdb import LangDB
+
+agent = Agent(
+    model=LangDB(id="deepseek-chat", project_id="langdb-project-id"), markdown=True
+)
+
+# Get the response in a variable
+# run: RunResponse = agent.run("Share a 2 sentence horror story")
+# print(run.content)
+
+# Print the response in the terminal
+agent.print_response("Share a 2 sentence horror story")
+
+```
+
+## Usage
+
+<Steps>
+  <Snippet file="create-venv-step.mdx" />
+
+  <Step title="Set your API key">
+    ```bash
+    export LANGDB_API_KEY=xxx
+    export LANGDB_PROJECT_ID=xxx
+    ```
+  </Step>
+
+  <Step title="Install libraries">
+    ```bash
+    pip install -U agno
+    ```
+  </Step>
+
+  <Step title="Run Agent">
+    <CodeGroup>
+    ```bash Mac
+    python cookbook/models/langdb/basic.py
+    ```
+
+    ```bash Windows
+    python cookbook/models/langdb/basic.py
+    ```
+    </CodeGroup>
+  </Step>
+</Steps>

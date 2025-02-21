@@ -131,7 +131,8 @@
             "models/perplexity",
             "models/sambanova",
             "models/together",
-            "models/xai"
+            "models/xai",
+            "models/langdb"
           ]
         },
         {
@@ -282,7 +283,8 @@
             "embedder/qdrant_fastembed",
             "embedder/sentencetransformers",
             "embedder/together",
-            "embedder/voyageai"
+            "embedder/voyageai",
+            "embedder/langdb"
           ]
         },
         {
@@ -712,6 +714,14 @@
           ]
         },
         {
+          "group": "LangDB",
+          "pages": [
+            "examples/models/langdb/basic",
+            "examples/models/langdb/basic_stream",
+            "examples/models/langdb/tool_use"
+          ]
+        },
+        {
           "group": "OpenAI",
           "pages": [
             "examples/models/openai/basic",
@@ -801,6 +811,7 @@
             "reference/models/azure_open_ai",
             "reference/models/fireworks",
             "reference/models/openrouter",
+            "reference/models/langdb",
             "reference/models/sambanova",
             "reference/models/internlm",
             "reference/models/ollama_tools",
