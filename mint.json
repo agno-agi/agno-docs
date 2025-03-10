@@ -56,6 +56,10 @@
       "url": "examples"
     },
     {
+      "name": "Workspaces",
+      "url": "workspaces"
+    },
+    {
       "name": "Reference",
       "url": "reference"
     },
@@ -307,6 +311,15 @@
             "workflows/advanced"
           ]
         }
+      ]
+    },
+    {
+      "group": "How to",
+      "pages": [
+        "how-to/install",
+        "how-to/local-docker-guide",
+        "how-to/contribute",
+        "how-to/phidata-to-agno"
       ]
     },
     {
@@ -786,13 +799,8 @@
       ]
     },
     {
-      "group": "How to",
-      "pages": [
-        "how-to/install",
-        "how-to/local-docker-guide",
-        "how-to/contribute",
-        "how-to/phidata-to-agno"
-      ]
+      "group": "Workspaces",
+      "pages": ["workspaces/introduction"]
     },
     {
       "group": "Reference",
