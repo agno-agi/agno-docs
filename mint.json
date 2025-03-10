@@ -630,6 +630,7 @@
           "pages": [
             "examples/models/cohere/basic",
             "examples/models/cohere/basic_stream",
+            "examples/models/cohere/image_agent",
             "examples/models/cohere/tool_use",
             "examples/models/cohere/structured_output",
             "examples/models/cohere/storage",
